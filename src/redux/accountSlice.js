@@ -6,12 +6,18 @@ const accountSlice = createSlice({
         balance: 1000,
     }, 
     reducers: {
-        withdrawal: (state,{payload}) => {
-            
+        withdrawalAmount: (state,{payload}) => {
+            if(payload > state.balance) {
+                alert("You can not withdrawal more money than your current balance.")
+            } else {
+                state.balance -= payload;
+            }
         },
-        deposit: () => {}
+        depositAmount: (state, {payload}) => {
+            state.balance += payload;
+        }
     }
 })
 
-export const {withdrawal, deposit} = accountSlice.actions;
+export const {withdrawalAmount, depositAmount} = accountSlice.actions;
 export default accountSlice.reducer;
