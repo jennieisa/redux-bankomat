@@ -4,6 +4,7 @@ const accountSlice = createSlice({
     name: "account",
     initialState: {
         balance: 1000,
+        currency: "SEK"
     }, 
     reducers: {
         withdrawalAmount: (state,{payload}) => {
@@ -15,9 +16,12 @@ const accountSlice = createSlice({
         },
         depositAmount: (state, {payload}) => {
             state.balance += payload;
+        },
+        changeCurrency: (state, {payload}) => {
+            
         }
     }
 })
 
-export const {withdrawalAmount, depositAmount} = accountSlice.actions;
+export const {withdrawalAmount, depositAmount, changeCurrency} = accountSlice.actions;
 export default accountSlice.reducer;
